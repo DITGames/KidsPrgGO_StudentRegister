@@ -3,9 +3,9 @@ using System.Text;
 
 namespace KidsPrgGO_StudentRegister
 {
-    public partial class Form1 : Form
+    public partial class StudentRegisterForm : Form
     {
-        public Form1()
+        public StudentRegisterForm()
         {
             InitializeComponent();
         }
@@ -18,9 +18,9 @@ namespace KidsPrgGO_StudentRegister
 
                 string json = $@"
                 {{
-                    ""name"": ""{txtName.Text}"",
-                    ""grade"": ""{cmbGrade.Text}"",
-                    ""tel"": ""{txtTel.Text}""
+                    ""name"": ""{""}"",
+                    ""grade"": ""{""}"",
+                    ""tel"": ""{""}""
                 }}";
 
                 HttpContent content =
@@ -51,6 +51,18 @@ namespace KidsPrgGO_StudentRegister
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void StudentRegisterForm_Load(object sender, EventArgs e)
+        {
+            // コンボボックスの初期項目を設定（選択してください）
+            SexComboBox.SelectedIndex = 0;
+            SchoolComboBox.SelectedIndex = 0;
+            CourseComboBox.SelectedIndex = 0;
+            ClassDayComboBox.SelectedIndex = 0;
+            ClassTimeComboBox.SelectedIndex = 0;
+            MembershipFeeCourceComboBox.SelectedIndex = 0;
+            PaymentMethodComboBox.SelectedIndex = 0;
         }
     }
 }
