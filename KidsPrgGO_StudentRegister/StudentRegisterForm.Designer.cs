@@ -44,14 +44,19 @@
             PaymentMethodComboBox = new ComboBox();
             SubsidyCardCheckBox = new CheckBox();
             TicketCheckBox = new CheckBox();
-            MembershipFeeCourceComboBox = new ComboBox();
+            MembershipFeeCourseComboBox = new ComboBox();
+            JoiningInformation = new GroupBox();
+            FirstMonthFeeTextBox = new TextBox();
+            ClassStartLabel = new Label();
+            ClassStartDateTimePicker = new DateTimePicker();
             GeneralInformation.SuspendLayout();
             PaymentInformation.SuspendLayout();
+            JoiningInformation.SuspendLayout();
             SuspendLayout();
             // 
             // RegisterButton
             // 
-            RegisterButton.Location = new Point(467, 305);
+            RegisterButton.Location = new Point(467, 386);
             RegisterButton.Name = "RegisterButton";
             RegisterButton.Size = new Size(141, 33);
             RegisterButton.TabIndex = 3;
@@ -81,7 +86,7 @@
             GeneralInformation.Controls.Add(LastNameTextBox);
             GeneralInformation.Location = new Point(12, 12);
             GeneralInformation.Name = "GeneralInformation";
-            GeneralInformation.Size = new Size(596, 178);
+            GeneralInformation.Size = new Size(596, 170);
             GeneralInformation.TabIndex = 5;
             GeneralInformation.TabStop = false;
             GeneralInformation.Text = "基本情報";
@@ -170,8 +175,8 @@
             PaymentInformation.Controls.Add(PaymentMethodComboBox);
             PaymentInformation.Controls.Add(SubsidyCardCheckBox);
             PaymentInformation.Controls.Add(TicketCheckBox);
-            PaymentInformation.Controls.Add(MembershipFeeCourceComboBox);
-            PaymentInformation.Location = new Point(12, 196);
+            PaymentInformation.Controls.Add(MembershipFeeCourseComboBox);
+            PaymentInformation.Location = new Point(12, 188);
             PaymentInformation.Name = "PaymentInformation";
             PaymentInformation.Size = new Size(596, 103);
             PaymentInformation.TabIndex = 6;
@@ -207,20 +212,59 @@
             TicketCheckBox.Text = "チケット制";
             TicketCheckBox.UseVisualStyleBackColor = true;
             // 
-            // MembershipFeeCourceComboBox
+            // MembershipFeeCourseComboBox
             // 
-            MembershipFeeCourceComboBox.FormattingEnabled = true;
-            MembershipFeeCourceComboBox.Items.AddRange(new object[] { "会費コースを選択してください", "スタンダード", "キンダー", "Unity", "特殊枠", "スタンダード（月2回）", "スタンダード（週2回）" });
-            MembershipFeeCourceComboBox.Location = new Point(6, 22);
-            MembershipFeeCourceComboBox.Name = "MembershipFeeCourceComboBox";
-            MembershipFeeCourceComboBox.Size = new Size(584, 23);
-            MembershipFeeCourceComboBox.TabIndex = 12;
+            MembershipFeeCourseComboBox.FormattingEnabled = true;
+            MembershipFeeCourseComboBox.Items.AddRange(new object[] { "会費コースを選択してください", "スタンダード", "キンダー", "Unity", "特殊枠", "スタンダード（月2回）", "スタンダード（週2回）" });
+            MembershipFeeCourseComboBox.Location = new Point(6, 22);
+            MembershipFeeCourseComboBox.Name = "MembershipFeeCourseComboBox";
+            MembershipFeeCourseComboBox.Size = new Size(584, 23);
+            MembershipFeeCourseComboBox.TabIndex = 12;
+            // 
+            // JoiningInformation
+            // 
+            JoiningInformation.Controls.Add(FirstMonthFeeTextBox);
+            JoiningInformation.Controls.Add(ClassStartLabel);
+            JoiningInformation.Controls.Add(ClassStartDateTimePicker);
+            JoiningInformation.Location = new Point(12, 297);
+            JoiningInformation.Name = "JoiningInformation";
+            JoiningInformation.Size = new Size(596, 83);
+            JoiningInformation.TabIndex = 7;
+            JoiningInformation.TabStop = false;
+            JoiningInformation.Text = "入会時情報";
+            // 
+            // FirstMonthFeeTextBox
+            // 
+            FirstMonthFeeTextBox.Location = new Point(6, 51);
+            FirstMonthFeeTextBox.Name = "FirstMonthFeeTextBox";
+            FirstMonthFeeTextBox.PlaceholderText = "初月授業料（税込）";
+            FirstMonthFeeTextBox.Size = new Size(273, 23);
+            FirstMonthFeeTextBox.TabIndex = 2;
+            FirstMonthFeeTextBox.TextChanged += FirstMonthFeeTextBox_TextChanged;
+            FirstMonthFeeTextBox.KeyPress += FirstMonthFeeTextBox_KeyPress;
+            // 
+            // ClassStartLabel
+            // 
+            ClassStartLabel.AutoSize = true;
+            ClassStartLabel.Location = new Point(6, 28);
+            ClassStartLabel.Name = "ClassStartLabel";
+            ClassStartLabel.Size = new Size(67, 15);
+            ClassStartLabel.TabIndex = 1;
+            ClassStartLabel.Text = "授業開始日";
+            // 
+            // ClassStartDateTimePicker
+            // 
+            ClassStartDateTimePicker.Location = new Point(79, 22);
+            ClassStartDateTimePicker.Name = "ClassStartDateTimePicker";
+            ClassStartDateTimePicker.Size = new Size(200, 23);
+            ClassStartDateTimePicker.TabIndex = 0;
             // 
             // StudentRegisterForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(620, 345);
+            ClientSize = new Size(620, 427);
+            Controls.Add(JoiningInformation);
             Controls.Add(PaymentInformation);
             Controls.Add(GeneralInformation);
             Controls.Add(RegisterButton);
@@ -231,6 +275,8 @@
             GeneralInformation.PerformLayout();
             PaymentInformation.ResumeLayout(false);
             PaymentInformation.PerformLayout();
+            JoiningInformation.ResumeLayout(false);
+            JoiningInformation.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -246,11 +292,15 @@
         private ComboBox SchoolComboBox;
         private ComboBox CourseComboBox;
         private GroupBox PaymentInformation;
-        private ComboBox MembershipFeeCourceComboBox;
+        private ComboBox MembershipFeeCourseComboBox;
         private ComboBox PaymentMethodComboBox;
         private CheckBox SubsidyCardCheckBox;
         private CheckBox TicketCheckBox;
         private ComboBox ClassDayComboBox;
         private ComboBox ClassTimeComboBox;
+        private GroupBox JoiningInformation;
+        private Label ClassStartLabel;
+        private DateTimePicker ClassStartDateTimePicker;
+        private TextBox FirstMonthFeeTextBox;
     }
 }
