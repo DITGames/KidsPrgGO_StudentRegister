@@ -24,8 +24,6 @@ namespace KidsPrgGO_StudentRegister
                     return;
                 }
 
-                using HttpClient client = new HttpClient();
-
                 string json = $@"
                 {{
                     ""name"": ""{LastNameTextBox.Text + " " + FirstNameTextBox.Text}"",
@@ -46,19 +44,9 @@ namespace KidsPrgGO_StudentRegister
                     ""firstMonthFee"": ""{FirstMonthFeeTextBox.Text}""
                 }}";
 
-                HttpContent content =
-                    new StringContent(
-                        json,
-                        Encoding.UTF8,
-                        "application/json");
-
-                HttpResponseMessage response = await client.PostAsync(
-                        "https://script.google.com/macros/s/AKfycbwORomd53Qxx46hhE1738loZpzDfr4qOOgPQcd6gj_bioY6oRUltbR4nRU13a-L_xLu6g/exec",
-                        content
-                        );
-
-                string result =
-                    await response.Content.ReadAsStringAsync();
+                // GASへ情報を送信
+                GasApiClient api = new GasApiClient();
+                string result = await api.AddPostStudentAsync(json);
 
                 MessageBox.Show(
                     "登録完了\n" + result,

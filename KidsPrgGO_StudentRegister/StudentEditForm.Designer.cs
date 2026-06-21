@@ -41,6 +41,7 @@
             LastNameTextBox = new TextBox();
             RegisterButton = new Button();
             JoiningInformation = new GroupBox();
+            FirstMonthFeeLabel = new Label();
             AdjournCheckBox = new CheckBox();
             FirstMonthFeeTextBox = new TextBox();
             ClassStartLabel = new Label();
@@ -50,7 +51,7 @@
             SubsidyCardCheckBox = new CheckBox();
             TicketCheckBox = new CheckBox();
             MembershipFeeCourseComboBox = new ComboBox();
-            FirstMonthFeeLabel = new Label();
+            CancelButton = new Button();
             GeneralInformation.SuspendLayout();
             JoiningInformation.SuspendLayout();
             PaymentInformation.SuspendLayout();
@@ -170,6 +171,7 @@
             RegisterButton.TabIndex = 8;
             RegisterButton.Text = "登録";
             RegisterButton.UseVisualStyleBackColor = true;
+            RegisterButton.Click += RegisterButton_Click;
             // 
             // JoiningInformation
             // 
@@ -184,6 +186,15 @@
             JoiningInformation.TabIndex = 11;
             JoiningInformation.TabStop = false;
             JoiningInformation.Text = "入会時情報";
+            // 
+            // FirstMonthFeeLabel
+            // 
+            FirstMonthFeeLabel.AutoSize = true;
+            FirstMonthFeeLabel.Location = new Point(6, 54);
+            FirstMonthFeeLabel.Name = "FirstMonthFeeLabel";
+            FirstMonthFeeLabel.Size = new Size(115, 15);
+            FirstMonthFeeLabel.TabIndex = 4;
+            FirstMonthFeeLabel.Text = "初月授業料（税込）";
             // 
             // AdjournCheckBox
             // 
@@ -270,20 +281,22 @@
             MembershipFeeCourseComboBox.Size = new Size(584, 23);
             MembershipFeeCourseComboBox.TabIndex = 12;
             // 
-            // FirstMonthFeeLabel
+            // CancelButton
             // 
-            FirstMonthFeeLabel.AutoSize = true;
-            FirstMonthFeeLabel.Location = new Point(6, 54);
-            FirstMonthFeeLabel.Name = "FirstMonthFeeLabel";
-            FirstMonthFeeLabel.Size = new Size(115, 15);
-            FirstMonthFeeLabel.TabIndex = 4;
-            FirstMonthFeeLabel.Text = "初月授業料（税込）";
+            CancelButton.Location = new Point(320, 389);
+            CancelButton.Name = "CancelButton";
+            CancelButton.Size = new Size(141, 33);
+            CancelButton.TabIndex = 12;
+            CancelButton.Text = "キャンセル";
+            CancelButton.UseVisualStyleBackColor = true;
+            CancelButton.Click += CancelButton_Click;
             // 
             // StudentEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(621, 430);
+            Controls.Add(CancelButton);
             Controls.Add(GeneralInformation);
             Controls.Add(RegisterButton);
             Controls.Add(JoiningInformation);
@@ -324,5 +337,6 @@
         private ComboBox MembershipFeeCourseComboBox;
         private CheckBox AdjournCheckBox;
         private Label FirstMonthFeeLabel;
+        private Button CancelButton;
     }
 }
