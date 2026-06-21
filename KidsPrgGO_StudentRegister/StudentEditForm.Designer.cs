@@ -266,7 +266,7 @@
             Controls.Add(JoiningInformation);
             Controls.Add(PaymentInformation);
             Name = "StudentEditForm";
-            Text = "StudentEditForm";
+            Text = "生徒情報編集";
             GeneralInformation.ResumeLayout(false);
             GeneralInformation.PerformLayout();
             JoiningInformation.ResumeLayout(false);

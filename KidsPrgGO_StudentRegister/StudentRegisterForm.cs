@@ -215,7 +215,7 @@ namespace KidsPrgGO_StudentRegister
         {
             studentEditForm = new StudentEditForm();
             studentEditForm.Show();
-            //studentEditForm.SearchStudent(SearchLastNameTextBox.Text + " " + SearchFirstNameTextBox.Text);
+            studentEditForm.SearchStudent(SearchLastNameTextBox.Text + " " + SearchFirstNameTextBox.Text);
         }
     }
 }
