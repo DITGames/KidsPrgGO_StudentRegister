@@ -49,14 +49,26 @@
             FirstMonthFeeTextBox = new TextBox();
             ClassStartLabel = new Label();
             ClassStartDateTimePicker = new DateTimePicker();
+            RegisterTab = new TabControl();
+            AddStudentPage = new TabPage();
+            EditStudentPage = new TabPage();
+            SearchInformation = new GroupBox();
+            SearchFirstNameTextBox = new TextBox();
+            SearchLastNameTextBox = new TextBox();
+            SearchSchoolComboBox = new ComboBox();
+            SearchEditButton = new Button();
             GeneralInformation.SuspendLayout();
             PaymentInformation.SuspendLayout();
             JoiningInformation.SuspendLayout();
+            RegisterTab.SuspendLayout();
+            AddStudentPage.SuspendLayout();
+            EditStudentPage.SuspendLayout();
+            SearchInformation.SuspendLayout();
             SuspendLayout();
             // 
             // RegisterButton
             // 
-            RegisterButton.Location = new Point(467, 386);
+            RegisterButton.Location = new Point(461, 383);
             RegisterButton.Name = "RegisterButton";
             RegisterButton.Size = new Size(141, 33);
             RegisterButton.TabIndex = 3;
@@ -84,7 +96,7 @@
             GeneralInformation.Controls.Add(LastRubyTextBox);
             GeneralInformation.Controls.Add(FirstNameTextBox);
             GeneralInformation.Controls.Add(LastNameTextBox);
-            GeneralInformation.Location = new Point(12, 12);
+            GeneralInformation.Location = new Point(6, 6);
             GeneralInformation.Name = "GeneralInformation";
             GeneralInformation.Size = new Size(596, 170);
             GeneralInformation.TabIndex = 5;
@@ -176,7 +188,7 @@
             PaymentInformation.Controls.Add(SubsidyCardCheckBox);
             PaymentInformation.Controls.Add(TicketCheckBox);
             PaymentInformation.Controls.Add(MembershipFeeCourseComboBox);
-            PaymentInformation.Location = new Point(12, 188);
+            PaymentInformation.Location = new Point(6, 182);
             PaymentInformation.Name = "PaymentInformation";
             PaymentInformation.Size = new Size(596, 103);
             PaymentInformation.TabIndex = 6;
@@ -226,7 +238,7 @@
             JoiningInformation.Controls.Add(FirstMonthFeeTextBox);
             JoiningInformation.Controls.Add(ClassStartLabel);
             JoiningInformation.Controls.Add(ClassStartDateTimePicker);
-            JoiningInformation.Location = new Point(12, 297);
+            JoiningInformation.Location = new Point(6, 291);
             JoiningInformation.Name = "JoiningInformation";
             JoiningInformation.Size = new Size(596, 83);
             JoiningInformation.TabIndex = 7;
@@ -259,17 +271,97 @@
             ClassStartDateTimePicker.Size = new Size(200, 23);
             ClassStartDateTimePicker.TabIndex = 0;
             // 
+            // RegisterTab
+            // 
+            RegisterTab.Controls.Add(AddStudentPage);
+            RegisterTab.Controls.Add(EditStudentPage);
+            RegisterTab.Location = new Point(12, 12);
+            RegisterTab.Name = "RegisterTab";
+            RegisterTab.SelectedIndex = 0;
+            RegisterTab.Size = new Size(617, 450);
+            RegisterTab.TabIndex = 8;
+            // 
+            // AddStudentPage
+            // 
+            AddStudentPage.Controls.Add(GeneralInformation);
+            AddStudentPage.Controls.Add(RegisterButton);
+            AddStudentPage.Controls.Add(JoiningInformation);
+            AddStudentPage.Controls.Add(PaymentInformation);
+            AddStudentPage.Location = new Point(4, 24);
+            AddStudentPage.Name = "AddStudentPage";
+            AddStudentPage.Padding = new Padding(3);
+            AddStudentPage.Size = new Size(609, 422);
+            AddStudentPage.TabIndex = 0;
+            AddStudentPage.Text = "新規生徒登録";
+            AddStudentPage.UseVisualStyleBackColor = true;
+            // 
+            // EditStudentPage
+            // 
+            EditStudentPage.Controls.Add(SearchEditButton);
+            EditStudentPage.Controls.Add(SearchInformation);
+            EditStudentPage.Location = new Point(4, 24);
+            EditStudentPage.Name = "EditStudentPage";
+            EditStudentPage.Padding = new Padding(3);
+            EditStudentPage.Size = new Size(609, 422);
+            EditStudentPage.TabIndex = 1;
+            EditStudentPage.Text = "生徒情報編集";
+            EditStudentPage.UseVisualStyleBackColor = true;
+            // 
+            // SearchInformation
+            // 
+            SearchInformation.Controls.Add(SearchSchoolComboBox);
+            SearchInformation.Controls.Add(SearchFirstNameTextBox);
+            SearchInformation.Controls.Add(SearchLastNameTextBox);
+            SearchInformation.Location = new Point(6, 6);
+            SearchInformation.Name = "SearchInformation";
+            SearchInformation.Size = new Size(597, 81);
+            SearchInformation.TabIndex = 8;
+            SearchInformation.TabStop = false;
+            SearchInformation.Text = "生徒検索";
+            // 
+            // SearchFirstNameTextBox
+            // 
+            SearchFirstNameTextBox.Location = new Point(160, 22);
+            SearchFirstNameTextBox.Name = "SearchFirstNameTextBox";
+            SearchFirstNameTextBox.PlaceholderText = "名（漢字）";
+            SearchFirstNameTextBox.Size = new Size(147, 23);
+            SearchFirstNameTextBox.TabIndex = 7;
+            // 
+            // SearchLastNameTextBox
+            // 
+            SearchLastNameTextBox.Location = new Point(7, 22);
+            SearchLastNameTextBox.Name = "SearchLastNameTextBox";
+            SearchLastNameTextBox.PlaceholderText = "姓（漢字）";
+            SearchLastNameTextBox.Size = new Size(147, 23);
+            SearchLastNameTextBox.TabIndex = 6;
+            // 
+            // SearchSchoolComboBox
+            // 
+            SearchSchoolComboBox.FormattingEnabled = true;
+            SearchSchoolComboBox.Items.AddRange(new object[] { "所属教室を選択してください", "堀江本校", "STEAMCLUB校", "豊中上野西校" });
+            SearchSchoolComboBox.Location = new Point(6, 51);
+            SearchSchoolComboBox.Name = "SearchSchoolComboBox";
+            SearchSchoolComboBox.Size = new Size(300, 23);
+            SearchSchoolComboBox.TabIndex = 11;
+            // 
+            // SearchEditButton
+            // 
+            SearchEditButton.Location = new Point(462, 93);
+            SearchEditButton.Name = "SearchEditButton";
+            SearchEditButton.Size = new Size(141, 33);
+            SearchEditButton.TabIndex = 9;
+            SearchEditButton.Text = "検索して編集";
+            SearchEditButton.UseVisualStyleBackColor = true;
+            SearchEditButton.Click += SearchButton_Click;
+            // 
             // StudentRegisterForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(620, 427);
-            Controls.Add(JoiningInformation);
-            Controls.Add(PaymentInformation);
-            Controls.Add(GeneralInformation);
-            Controls.Add(RegisterButton);
+            ClientSize = new Size(638, 470);
+            Controls.Add(RegisterTab);
             Name = "StudentRegisterForm";
-            Text = "新規生徒登録";
+            Text = "生徒登録";
             Load += StudentRegisterForm_Load;
             GeneralInformation.ResumeLayout(false);
             GeneralInformation.PerformLayout();
@@ -277,6 +369,11 @@
             PaymentInformation.PerformLayout();
             JoiningInformation.ResumeLayout(false);
             JoiningInformation.PerformLayout();
+            RegisterTab.ResumeLayout(false);
+            AddStudentPage.ResumeLayout(false);
+            EditStudentPage.ResumeLayout(false);
+            SearchInformation.ResumeLayout(false);
+            SearchInformation.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -302,5 +399,13 @@
         private Label ClassStartLabel;
         private DateTimePicker ClassStartDateTimePicker;
         private TextBox FirstMonthFeeTextBox;
+        private TabControl RegisterTab;
+        private TabPage AddStudentPage;
+        private TabPage EditStudentPage;
+        private TextBox SearchFirstNameTextBox;
+        private TextBox SearchLastNameTextBox;
+        private GroupBox SearchInformation;
+        private Button SearchEditButton;
+        private ComboBox SearchSchoolComboBox;
     }
 }

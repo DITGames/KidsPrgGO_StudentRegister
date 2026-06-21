@@ -1,5 +1,6 @@
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 
 namespace KidsPrgGO_StudentRegister
 {
@@ -205,6 +206,11 @@ namespace KidsPrgGO_StudentRegister
             }
 
             return false;
+        }
+
+        private async void SearchButton_Click(object sender, EventArgs e)
+        {
+            //await GetStudentAsync(SearchLastNameTextBox.Text + " " + SearchFirstNameTextBox.Text);
         }
     }
 }
