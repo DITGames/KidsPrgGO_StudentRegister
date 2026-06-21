@@ -52,11 +52,12 @@
             RegisterTab = new TabControl();
             AddStudentPage = new TabPage();
             EditStudentPage = new TabPage();
+            SearchEditButton = new Button();
             SearchInformation = new GroupBox();
+            SearchSchoolComboBox = new ComboBox();
             SearchFirstNameTextBox = new TextBox();
             SearchLastNameTextBox = new TextBox();
-            SearchSchoolComboBox = new ComboBox();
-            SearchEditButton = new Button();
+            FirstMonthFeeLabel = new Label();
             GeneralInformation.SuspendLayout();
             PaymentInformation.SuspendLayout();
             JoiningInformation.SuspendLayout();
@@ -235,6 +236,7 @@
             // 
             // JoiningInformation
             // 
+            JoiningInformation.Controls.Add(FirstMonthFeeLabel);
             JoiningInformation.Controls.Add(FirstMonthFeeTextBox);
             JoiningInformation.Controls.Add(ClassStartLabel);
             JoiningInformation.Controls.Add(ClassStartDateTimePicker);
@@ -247,7 +249,7 @@
             // 
             // FirstMonthFeeTextBox
             // 
-            FirstMonthFeeTextBox.Location = new Point(6, 51);
+            FirstMonthFeeTextBox.Location = new Point(127, 51);
             FirstMonthFeeTextBox.Name = "FirstMonthFeeTextBox";
             FirstMonthFeeTextBox.PlaceholderText = "初月授業料（税込）";
             FirstMonthFeeTextBox.Size = new Size(273, 23);
@@ -307,6 +309,16 @@
             EditStudentPage.Text = "生徒情報編集";
             EditStudentPage.UseVisualStyleBackColor = true;
             // 
+            // SearchEditButton
+            // 
+            SearchEditButton.Location = new Point(462, 93);
+            SearchEditButton.Name = "SearchEditButton";
+            SearchEditButton.Size = new Size(141, 33);
+            SearchEditButton.TabIndex = 9;
+            SearchEditButton.Text = "検索して編集";
+            SearchEditButton.UseVisualStyleBackColor = true;
+            SearchEditButton.Click += SearchButton_Click;
+            // 
             // SearchInformation
             // 
             SearchInformation.Controls.Add(SearchSchoolComboBox);
@@ -318,6 +330,15 @@
             SearchInformation.TabIndex = 8;
             SearchInformation.TabStop = false;
             SearchInformation.Text = "生徒検索";
+            // 
+            // SearchSchoolComboBox
+            // 
+            SearchSchoolComboBox.FormattingEnabled = true;
+            SearchSchoolComboBox.Items.AddRange(new object[] { "所属教室を選択してください", "堀江本校", "STEAMCLUB校", "豊中上野西校" });
+            SearchSchoolComboBox.Location = new Point(6, 51);
+            SearchSchoolComboBox.Name = "SearchSchoolComboBox";
+            SearchSchoolComboBox.Size = new Size(300, 23);
+            SearchSchoolComboBox.TabIndex = 11;
             // 
             // SearchFirstNameTextBox
             // 
@@ -335,24 +356,14 @@
             SearchLastNameTextBox.Size = new Size(147, 23);
             SearchLastNameTextBox.TabIndex = 6;
             // 
-            // SearchSchoolComboBox
+            // FirstMonthFeeLabel
             // 
-            SearchSchoolComboBox.FormattingEnabled = true;
-            SearchSchoolComboBox.Items.AddRange(new object[] { "所属教室を選択してください", "堀江本校", "STEAMCLUB校", "豊中上野西校" });
-            SearchSchoolComboBox.Location = new Point(6, 51);
-            SearchSchoolComboBox.Name = "SearchSchoolComboBox";
-            SearchSchoolComboBox.Size = new Size(300, 23);
-            SearchSchoolComboBox.TabIndex = 11;
-            // 
-            // SearchEditButton
-            // 
-            SearchEditButton.Location = new Point(462, 93);
-            SearchEditButton.Name = "SearchEditButton";
-            SearchEditButton.Size = new Size(141, 33);
-            SearchEditButton.TabIndex = 9;
-            SearchEditButton.Text = "検索して編集";
-            SearchEditButton.UseVisualStyleBackColor = true;
-            SearchEditButton.Click += SearchButton_Click;
+            FirstMonthFeeLabel.AutoSize = true;
+            FirstMonthFeeLabel.Location = new Point(6, 54);
+            FirstMonthFeeLabel.Name = "FirstMonthFeeLabel";
+            FirstMonthFeeLabel.Size = new Size(115, 15);
+            FirstMonthFeeLabel.TabIndex = 5;
+            FirstMonthFeeLabel.Text = "初月授業料（税込）";
             // 
             // StudentRegisterForm
             // 
@@ -407,5 +418,6 @@
         private GroupBox SearchInformation;
         private Button SearchEditButton;
         private ComboBox SearchSchoolComboBox;
+        private Label FirstMonthFeeLabel;
     }
 }

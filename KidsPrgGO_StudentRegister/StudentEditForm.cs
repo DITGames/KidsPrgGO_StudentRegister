@@ -21,22 +21,24 @@ namespace KidsPrgGO_StudentRegister
 
         public async void SearchStudent(string name)
         {
+            GasApiClient api = new GasApiClient();
+
             // 生徒を検索
-            string result = await GetStudentAsync(name); 
+            string result = await api.GetStudentAsync(name);
             
             // データを項目ごとに振り分け
-            if (!string.IsNullOrWhiteSpace(result)) 
-            { 
-                MessageBox.Show( result, "検索成功", MessageBoxButtons.OK, MessageBoxIcon.Information); 
-                studentData = JsonSerializer.Deserialize<StudentData>(result); 
+            if (result.Contains("\"error\"")) 
+            {
+                MessageBox.Show("データを取得できませんでした", "データ取得エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             } else 
-            { 
-                MessageBox.Show( "データをJSONへ変換できませんでした", "データ取得エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; 
+            {
+                MessageBox.Show("生徒が見つかりました　編集を開始します", "検索成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                studentData = JsonSerializer.Deserialize<StudentData>(result);
             } 
             
             // データー変換
-            if (studentData != null) 
+            if (studentData.data != null) 
             { 
                 studentData.ConvertData(); 
             } else 
@@ -47,21 +49,32 @@ namespace KidsPrgGO_StudentRegister
             //=== フォームに反映 ===// 
             // 名前
             LastNameTextBox.Text = studentData.name.Split(' ')[0]; 
-            FirstNameTextBox.Text = studentData.name.Split(' ')[1]; 
-            
-            // フリガナ
+            FirstNameTextBox.Text = studentData.name.Split(' ')[1];
             LastRubyTextBox.Text = studentData.ruby.Split(' ')[0]; 
             FirstRubyTextBox.Text = studentData.ruby.Split(' ')[1];
-        }
 
-        async Task<string> GetStudentAsync(string name)
-        {
-            using HttpClient client = new HttpClient(); 
-            string url = $"https://script.google.com/macros/s/AKfycbwQ8S1mkxmrkjBOy6RLk34w6eAjjX_ZIxvLV5oNMkgoxKm5Qsj09i36QvAmkVkJk2DOvg/exec?name={name}"; 
-            string response = await client.GetStringAsync(url); 
-            var json = JsonSerializer.Deserialize<dynamic>(response); 
-            MessageBox.Show("生徒情報の取得に成功しました", "検索成功", MessageBoxButtons.OK, MessageBoxIcon.Information); 
-            return response;
+            // 基本情報
+            BrotherCheckBox.Checked = studentData.brother;
+            SexComboBox.Text = studentData.sex;
+            SchoolComboBox.Text = studentData.school;
+            CourseComboBox.Text = studentData.course;
+            ClassDayComboBox.Text = studentData.classDay;
+            ClassTimeComboBox.Text = studentData.classTime;
+
+            // 決済
+            MembershipFeeCourseComboBox.Text = studentData.membershipFeeCourse;
+            PaymentMethodComboBox.Text = studentData.paymentMethod;
+            TicketCheckBox.Checked = studentData.ticket;
+            SubsidyCardCheckBox.Checked = studentData.subsidyCard;
+
+            // 入会時情報
+            if (DateTime.TryParse(studentData.classStartDay, out var dt))
+            {
+                ClassStartDateTimePicker.Value = dt.ToLocalTime();
+            }
+            AdjournCheckBox.Checked = studentData.adjourn;
+            FirstMonthFeeTextBox.Text = studentData.firstMonthFee.ToString();
+
         }
     }
 }

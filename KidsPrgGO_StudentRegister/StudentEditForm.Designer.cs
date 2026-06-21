@@ -41,6 +41,7 @@
             LastNameTextBox = new TextBox();
             RegisterButton = new Button();
             JoiningInformation = new GroupBox();
+            AdjournCheckBox = new CheckBox();
             FirstMonthFeeTextBox = new TextBox();
             ClassStartLabel = new Label();
             ClassStartDateTimePicker = new DateTimePicker();
@@ -49,6 +50,7 @@
             SubsidyCardCheckBox = new CheckBox();
             TicketCheckBox = new CheckBox();
             MembershipFeeCourseComboBox = new ComboBox();
+            FirstMonthFeeLabel = new Label();
             GeneralInformation.SuspendLayout();
             JoiningInformation.SuspendLayout();
             PaymentInformation.SuspendLayout();
@@ -171,6 +173,8 @@
             // 
             // JoiningInformation
             // 
+            JoiningInformation.Controls.Add(FirstMonthFeeLabel);
+            JoiningInformation.Controls.Add(AdjournCheckBox);
             JoiningInformation.Controls.Add(FirstMonthFeeTextBox);
             JoiningInformation.Controls.Add(ClassStartLabel);
             JoiningInformation.Controls.Add(ClassStartDateTimePicker);
@@ -181,9 +185,19 @@
             JoiningInformation.TabStop = false;
             JoiningInformation.Text = "入会時情報";
             // 
+            // AdjournCheckBox
+            // 
+            AdjournCheckBox.AutoSize = true;
+            AdjournCheckBox.Location = new Point(285, 26);
+            AdjournCheckBox.Name = "AdjournCheckBox";
+            AdjournCheckBox.Size = new Size(74, 19);
+            AdjournCheckBox.TabIndex = 3;
+            AdjournCheckBox.Text = "休退会中";
+            AdjournCheckBox.UseVisualStyleBackColor = true;
+            // 
             // FirstMonthFeeTextBox
             // 
-            FirstMonthFeeTextBox.Location = new Point(6, 51);
+            FirstMonthFeeTextBox.Location = new Point(127, 51);
             FirstMonthFeeTextBox.Name = "FirstMonthFeeTextBox";
             FirstMonthFeeTextBox.PlaceholderText = "初月授業料（税込）";
             FirstMonthFeeTextBox.Size = new Size(273, 23);
@@ -256,6 +270,15 @@
             MembershipFeeCourseComboBox.Size = new Size(584, 23);
             MembershipFeeCourseComboBox.TabIndex = 12;
             // 
+            // FirstMonthFeeLabel
+            // 
+            FirstMonthFeeLabel.AutoSize = true;
+            FirstMonthFeeLabel.Location = new Point(6, 54);
+            FirstMonthFeeLabel.Name = "FirstMonthFeeLabel";
+            FirstMonthFeeLabel.Size = new Size(115, 15);
+            FirstMonthFeeLabel.TabIndex = 4;
+            FirstMonthFeeLabel.Text = "初月授業料（税込）";
+            // 
             // StudentEditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -299,5 +322,7 @@
         private CheckBox SubsidyCardCheckBox;
         private CheckBox TicketCheckBox;
         private ComboBox MembershipFeeCourseComboBox;
+        private CheckBox AdjournCheckBox;
+        private Label FirstMonthFeeLabel;
     }
 }
