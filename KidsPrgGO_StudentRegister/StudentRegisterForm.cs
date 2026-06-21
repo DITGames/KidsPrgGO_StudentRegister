@@ -6,6 +6,9 @@ namespace KidsPrgGO_StudentRegister
 {
     public partial class StudentRegisterForm : Form
     {
+
+        StudentEditForm studentEditForm;
+
         public StudentRegisterForm()
         {
             InitializeComponent();
@@ -210,7 +213,9 @@ namespace KidsPrgGO_StudentRegister
 
         private async void SearchButton_Click(object sender, EventArgs e)
         {
-            //await GetStudentAsync(SearchLastNameTextBox.Text + " " + SearchFirstNameTextBox.Text);
+            studentEditForm = new StudentEditForm();
+            studentEditForm.Show();
+            //studentEditForm.SearchStudent(SearchLastNameTextBox.Text + " " + SearchFirstNameTextBox.Text);
         }
     }
 }
